@@ -2,26 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html,body{
+  min-height: 100vh;
+}
+body{
+  position: relative;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.wrapper{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  transition: all .3s ease;
+}
+.wrapper .cart{
+  aspect-ratio: 9/12;
+
+  animation: op .3s ease;
+}
+.home{
+  min-height: calc(100vh - 100px);
+}
+
+.gradient{
+  position: relative;
+}
+
+.gradient::after{
+  content: "Pokemon Center";
+  position: absolute;
+  
+  font-size: 3.75rem;
+  line-height: 1;
+  
+  top: 0;
+  left: 0;
+  animation: op 2s ease-in-out infinite alternate;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background-image: linear-gradient(90deg, rgb(255, 77, 77), rgb(249, 203, 40));
+}
+
+@keyframes op {
+  from{
+    opacity: -1;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  to{
+    opacity: 1;
+  }
 }
